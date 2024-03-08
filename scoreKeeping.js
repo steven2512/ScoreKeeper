@@ -1,46 +1,55 @@
-const reset = document.querySelector('#reset')
-const maxScore = document.querySelector('#maxScore')
-let gameIsOver = false
-
-
-const p1All = {
-    score: document.querySelector('#p1Score'),
-    add: document.querySelector('#p1Add'),
-
+const p1 = {
+    score: 0,
+    button: document.querySelector('#p1Button'),
+    display: document.querySelector('#p1Display')
+}
+const p2 = {
+    score: 0,
+    button: document.querySelector('#p2Button'),
+    display: document.querySelector('#p2Display')
 }
 
-const p2All = {
-    score: document.querySelector('#p2Score'),
-    add: document.querySelector('#p2Add')
+const resetButton = document.querySelector('#reset');
+const winningScoreSelect = document.querySelector('#playto');
+let winningScore = 3;
+let isGameOver = false;
 
-}
-
-function updateScore(player, opponent) {
-    if (!gameIsOver) {
-        let newValue = parseInt(player.score.innerText) + 1
-        player.score.innerText = newValue
-        if (parseInt(player.score.innerText) === parseInt(maxScore.value)) {
-            player.score.style.color = 'green';
-            opponent.score.style.color = 'red';
-            gameIsOver = true
+function updateScores(player, opponent) {
+    if (!isGameOver) {
+        player.score += 1;
+        if (player.score === winningScore) {
+            isGameOver = true;
+            player.display.classList.add('has-text-success');
+            opponent.display.classList.add('has-text-danger');
+            player.button.disabled = true;
+            opponent.button.disabled = true;
         }
+        player.display.textContent = player.score;
     }
-
 }
 
-p1All.add.addEventListener('click', function () {
-    updateScore(p1All, p2All)
+
+p1.button.addEventListener('click', function () {
+    updateScores(p1, p2)
 })
-p2All.add.addEventListener('click', function () {
-    updateScore(p2All, p1All)
+p2.button.addEventListener('click', function () {
+    updateScores(p2, p1)
 })
 
-function resetScore() {
-    gameIsOver = false;
-    p1All.score.innerText = 0;
-    p1All.score.style.color = "";
-    p2All.score.innerText = 0;
-    p2All.score.style.color = "";
+
+winningScoreSelect.addEventListener('change', function () {
+    winningScore = parseInt(this.value);
+    reset();
+})
+
+resetButton.addEventListener('click', reset)
+
+function reset() {
+    isGameOver = false;
+    for (let p of [p1, p2]) {
+        p.score = 0;
+        p.display.textContent = 0;
+        p.display.classList.remove('has-text-success', 'has-text-danger');
+        p.button.disabled = false;
+    }
 }
-reset.addEventListener('click', resetScore)
-maxScore.addEventListener('change', resetScore)
