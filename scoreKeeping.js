@@ -55,10 +55,11 @@ function reset() {
 }
 
 const mode = document.querySelector('#switch')
-const gameImage = document.querySelector('gameImage')
+const gameImage = document.querySelector('#gameImage')
 let dark = true
 mode.addEventListener('click', function () {
     if (dark) {
+        gameImage.src = "https://images.unsplash.com/photo-1625480862383-7f6593ade292?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
         document.body.style.backgroundImage = "url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4f90510d-3dcd-4a9c-a1ee-5dbf41625fa8/df1awmr-b60fd344-b495-47f1-b175-89866df4b9ad.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRmOTA1MTBkLTNkY2QtNGE5Yy1hMWVlLTVkYmY0MTYyNWZhOFwvZGYxYXdtci1iNjBmZDM0NC1iNDk1LTQ3ZjEtYjE3NS04OTg2NmRmNGI5YWQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WHTnJd_WIJKNAa9J4XLXiZvsxyOZ_igCnmyD_l3lONw')";
         mode.firstChild.innerText = "Light"
         dark = false
