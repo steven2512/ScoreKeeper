@@ -55,6 +55,7 @@ function reset() {
 }
 
 const mode = document.querySelector('#switch')
+const gameImage = document.querySelector('gameImage')
 let dark = true
 mode.addEventListener('click', function () {
     if (dark) {
@@ -63,6 +64,7 @@ mode.addEventListener('click', function () {
         dark = false
     }
     else {
+
         document.body.style.backgroundImage = "url('https://wallpaperaccess.com/full/676037.jpg')";
         mode.firstChild.innerText = "Dark"
         dark = true
