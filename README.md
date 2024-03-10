@@ -1,1 +1,1 @@
-A simple website utilizing HTML, CSS, and JavaScript simulating a badminton game where users can set specific winning conditions, update scores, and even more customizations.
+An engaging web interface using HTML, CSS, and JavaScript that simulates a badminton game, allowing users to define winning conditions, update scores, and customize their experience.
